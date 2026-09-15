@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Nine Alpha Schools</title>
+  <meta name="description" content="Alpha School now has nine types of schools. Same morning engine. Nine different afternoons." />
+  <meta name="theme-color" content="#07080B" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #07080B;
+      --surface: #12141A;
+      --surface-2: #181B22;
+      --line: rgba(244,241,234,0.09);
+      --line-strong: rgba(244,241,234,0.16);
+      --text: #F4F1EA;
+      --mute: #8E887C;
+      --mute-2: #B7B1A4;
+      --am: #C9C2B3;
+      --gold: #E8C36A;
+      --nextgen: #FF2D95;
+      --waypoint: #8FB56A;
+      --sports: #E23B2E;
+      --world: #1FA7A0;
+      --founders: #D4AF37;
+      --gt: #7B8CFF;
+      --mont: #C67B5C;
+      --nova: #4DA3FF;
+      --alpha: #E8C36A;
+      --radius: 18px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    html, body { background: var(--bg); color: var(--text); }
+    body {
+      font-family: "Instrument Sans", system-ui, sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+      min-height: 100vh;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    body::before {
+      content: "";
+      position: fixed; inset: 0; pointer-events: none; z-index: 40; opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+    header {
+      position: sticky; top: 0; z-index: 20;
+      backdrop-filter: blur(18px);
+      background: rgba(7,8,11,0.72);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 58px; gap: 16px; }
+    .mark { font-family: "Instrument Serif", Georgia, serif; font-size: 20px; letter-spacing: -0.03em; }
+    .mark em { font-style: italic; color: var(--gold); }
+    .nav-meta { font-family: "IBM Plex Mono", monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mute); }
+    .nav-meta a { border-bottom: 1px solid var(--line-strong); }
+    .hero { padding: 48px 0 28px; }
+    .kicker {
+      font-family: "IBM Plex Mono", monospace; font-size: 11px; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 18px;
+    }
+    h1 {
+      font-family: "Instrument Serif", Georgia, serif;
+      font-size: clamp(48px, 14vw, 92px);
+      line-height: 0.88; letter-spacing: -0.045em; font-weight: 400;
+    }
+    h1 span { display: block; }
+    h1 .engine { font-style: italic; color: var(--mute-2); }
+    .dek { max-width: 34em; margin-top: 22px; color: var(--mute-2); font-size: 17px; }
+    .dek strong { color: var(--text); font-weight: 500; }
+    .split {
+      margin-top: 36px; display: grid; grid-template-columns: 1fr 1fr;
+      border: 1px solid var(--line); border-radius: var(--radius);
+      overflow: hidden; background: var(--surface);
+    }
+    .lane { padding: 22px 20px 20px; }
+    .lane + .lane {
+      border-left: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(232,195,106,0.07), transparent 70%);
+    }
+    .lane-label {
+      font-family: "IBM Plex Mono", monospace; font-size: 10px; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--mute); margin-bottom: 8px;
+    }
+    .lane h2 {
+      font-family: "Instrument Serif", Georgia, serif;
+      font-size: clamp(22px, 5.6vw, 32px); letter-spacing: -0.03em;
+      line-height: 1.05; font-weight: 400;
+    }
+    .lane p { margin-top: 8px; color: var(--mute); font-size: 13.5px; }
+    .count-row {
+      display: flex; justify-content: space-between; gap: 16px;
+      margin-top: 28px; padding-top: 18px; border-top: 1px solid var(--line);
+      color: var(--mute); font-size: 13px;
+    }
+    .count-row b {
+      display: block; color: var(--text); font-family: "Instrument Serif", Georgia, serif;
+      font-size: 28px; font-weight: 400; letter-spacing: -0.03em;
+    }
+    .grid { display: grid; grid-template-columns: 1fr; gap: 14px; padding: 10px 0 48px; }
+    .card {
+      display: block; position: relative; background: var(--surface);
+      border: 1px solid var(--line); border-radius: var(--radius);
+      padding: 22px 20px 18px; overflow: hidden;
+      transition: transform 0.28s ease, border-color 0.28s ease, background 0.28s ease;
+    }
+    .card::before {
+      content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--accent);
+    }
+    .card:hover, .card:focus-visible {
+      transform: translateY(-4px);
+      border-color: color-mix(in srgb, var(--accent) 55%, var(--line-strong));
+      background: var(--surface-2); outline: none;
+    }
+    .idx {
+      font-family: "Instrument Serif", Georgia, serif; font-size: 42px; line-height: 1;
+      letter-spacing: -0.04em; color: color-mix(in srgb, var(--accent) 50%, transparent);
+      position: absolute; right: 16px; top: 10px;
+    }
+    .name {
+      font-family: "Instrument Serif", Georgia, serif; font-size: 28px;
+      letter-spacing: -0.03em; line-height: 1.05; padding-right: 52px;
+    }
+    .focus { margin-top: 6px; color: var(--accent); font-size: 13px; font-weight: 500; }
+    .blurb { margin-top: 12px; color: var(--mute-2); font-size: 15px; max-width: 36em; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+    .chip {
+      font-family: "IBM Plex Mono", monospace; font-size: 10px; letter-spacing: 0.08em;
+      text-transform: uppercase; border: 1px solid var(--line-strong);
+      border-radius: 999px; padding: 6px 10px; color: var(--mute-2);
+    }
+    .chip.am { color: var(--am); }
+    .chip.pm {
+      color: var(--accent);
+      border-color: color-mix(in srgb, var(--accent) 45%, transparent);
+      background: color-mix(in srgb, var(--accent) 10%, transparent);
+    }
+    .domain {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-top: 16px; padding-top: 14px; border-top: 1px dashed var(--line);
+      font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--accent);
+    }
+    .c-nextgen { --accent: var(--nextgen); }
+    .c-waypoint { --accent: var(--waypoint); }
+    .c-sports { --accent: var(--sports); }
+    .c-world { --accent: var(--world); }
+    .c-founders { --accent: var(--founders); }
+    .c-gt { --accent: var(--gt); }
+    .c-mont { --accent: var(--mont); }
+    .c-nova { --accent: var(--nova); }
+    .c-alpha { --accent: var(--alpha); }
+    .band {
+      margin: 0 0 56px; padding: 32px 24px;
+      border: 1px solid var(--line); border-radius: 22px;
+      background: radial-gradient(1200px 280px at 80% -20%, rgba(232,195,106,0.12), transparent 50%), var(--surface);
+    }
+    .band h2 {
+      font-family: "Instrument Serif", Georgia, serif;
+      font-size: clamp(30px, 8vw, 48px); letter-spacing: -0.04em;
+      line-height: 0.95; font-weight: 400;
+    }
+    .band h2 em { font-style: italic; color: var(--gold); }
+    .band p { margin-top: 12px; color: var(--mute-2); max-width: 36em; }
+    .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px; border-radius: 999px;
+      padding: 11px 16px; font-size: 14px; font-weight: 500; border: 1px solid var(--line-strong);
+    }
+    .btn.primary { background: var(--text); color: #111; border-color: transparent; }
+    .btn.ghost { color: var(--mute-2); }
+    footer { border-top: 1px solid var(--line); padding: 28px 0 48px; color: var(--mute); font-size: 13px; }
+    footer a { color: var(--mute-2); border-bottom: 1px solid var(--line-strong); }
+    .chips-foot { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 10px; }
+    .chip-link {
+      font-family: "IBM Plex Mono", monospace; font-size: 11px; letter-spacing: 0.06em;
+      border: 1px solid var(--line-strong); border-radius: 999px; padding: 7px 11px; color: var(--mute-2);
+    }
+    footer .fine { margin-top: 8px; font-size: 12px; color: var(--mute); }
+    @media (min-width: 760px) {
+      .grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+      .hero { padding-top: 72px; }
+      .lane { padding: 28px; }
+    }
+    @media (min-width: 1020px) {
+      .grid { grid-template-columns: 1fr 1fr 1fr; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .card { transition: none; }
+      .card:hover { transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <div class="mark">Nine <em>Schools</em></div>
+      <div class="nav-meta"><a href="https://x.com/p_kuperman/status/2099517869578928440" target="_blank" rel="noopener">Source · Sep 14</a></div>
+    </div>
+  </header>
+  <main>
+    <section class="wrap hero">
+      <p class="kicker">Alpha School · 9 types</p>
+      <h1>
+        <span>Nine schools.</span>
+        <span class="engine">One engine.</span>
+      </h1>
+      <p class="dek">
+        <strong>Mornings:</strong> top 1% academics.
+        <strong>Afternoons:</strong> the thing they would skip school for.
+        The 2 Hour Learning model is the constant. The afternoon is the product.
+      </p>
+      <div class="split">
+        <div class="lane">
+          <div class="lane-label">AM</div>
+          <h2>Master the core.</h2>
+          <p>Top 1% academics. Two hours. Same engine in every building.</p>
+        </div>
+        <div class="lane">
+          <div class="lane-label">PM</div>
+          <h2>Then the obsession.</h2>
+          <p>Four hours inside one lane: games, wild, sport, world, company, mind.</p>
+        </div>
+      </div>
+      <div class="count-row">
+        <div><b>9</b> school types</div>
+        <div><b>40+</b> flagship cities</div>
+        <div><b>1,000</b> Toronto target</div>
+      </div>
+    </section>
+    <section class="wrap grid" aria-label="Nine school types">
+      <a class="card c-nextgen" href="https://nextgenacademy.school" target="_blank" rel="noopener">
+        <div class="idx">01</div>
+        <div class="name">NextGen Academy</div>
+        <div class="focus">Gaming & esports</div>
+        <p class="blurb">Neon campus. Top 1% in the morning. Video games and esports after lunch.</p>
+        <div class="chips"><span class="chip am">AM · Top 1%</span><span class="chip pm">PM · Esports</span></div>
+        <div class="domain">nextgenacademy.school</div>
+      </a>
+      <a class="card c-waypoint" href="https://waypointacademy.school" target="_blank" rel="noopener">
+        <div class="idx">02</div>
+        <div class="name">Waypoint Academy</div>
+        <div class="focus">Outdoor survival & wilderness</div>
+        <p class="blurb">Orienteering, archery, rucking, survival. The wild after noon.</p>
+        <div class="chips"><span class="chip am">AM · Top 1%</span><span class="chip pm">PM · Wilderness</span></div>
+        <div class="domain">waypointacademy.school</div>
+      </a>
+      <a class="card c-sports" href="https://sportsacademy.school" target="_blank" rel="noopener">
+        <div class="idx">03</div>
+        <div class="name">Texas Sports Academy</div>
+        <div class="focus">Single- and multi-sport</div>
+        <p class="blurb">3–4 hours of sport every afternoon. Built for students who want to be D-1 athletes.</p>
+        <div class="chips"><span class="chip am">AM · Top 1%</span><span class="chip pm">PM · D-1 track</span></div>
+        <div class="domain">sportsacademy.school</div>
+      </a>
+      <a class="card c-world" href="https://world.alpha.school" target="_blank" rel="noopener">
+        <div class="idx">04</div>
+        <div class="name">Alpha World School</div>
+        <div class="focus">Study abroad · Kenya & Ecuador</div>
+        <p class="blurb">Build a school in Kenya or Ecuador in the afternoon — but not both in the same afternoon.</p>
+        <div class="chips"><span class="chip am">AM · Top 1%</span><span class="chip pm">PM · Abroad</span></div>
+        <div class="domain">world.alpha.school</div>
+      </a>
+      <a class="card c-founders" href="https://founders.school" target="_blank" rel="noopener">
+        <div class="idx">05</div>
+        <div class="name">Founders School</div>
+        <div class="focus">Entrepreneurship & business</div>
+        <p class="blurb">Build a business to $1M in profit over four years of high school. Diploma plus a company.</p>
+        <div class="chips"><span class="chip am">AM · Top 1%</span><span class="chip pm">PM · $1M company</span></div>
+        <div class="domain">founders.school</div>
+      </a>
+      <a class="card c-gt" href="https://gt.school" target="_blank" rel="noopener">
+        <div class="idx">06</div>
+        <div class="name">GT School</div>
+        <div class="focus">Gifted & Talented</div>
+        <p class="blurb">Speech & debate, competition math, chess, robotics, AI. Academics that do not clock out at noon.</p>
+        <div class="chips"><span class="chip am">AM · Top 1%</span><span class="chip pm">PM · Competitions</span></div>
+        <div class="domain">gt.school</div>
+      </a>
+      <a class="card c-mont" href="https://montessorium.school" target="_blank" rel="noopener">
+        <div class="idx">07</div>
+        <div class="name">Montessorium</div>
+        <div class="focus">Modernized, tech-enabled Montessori</div>
+        <p class="blurb">Follow the child all day. Timeback in the morning. Montessori method through the afternoon.</p>
+        <div class="chips"><span class="chip am">AM · Top 1%</span><span class="chip pm">PM · Follow the child</span></div>
+        <div class="domain">montessorium.school</div>
+      </a>
+      <a class="card c-nova" href="https://novaacademy.school" target="_blank" rel="noopener">
+        <div class="idx">08</div>
+        <div class="name">Nova Academy</div>
+        <div class="focus">Affordable access to the Alpha model</div>
+        <p class="blurb">Same morning engine. A lower-cost, community-embedded version of the afternoon workshops.</p>
+        <div class="chips"><span class="chip am">AM · Top 1%</span><span class="chip pm">PM · Community</span></div>
+        <div class="domain">novaacademy.school</div>
+      </a>
+      <a class="card c-alpha" href="https://alpha.school" target="_blank" rel="noopener">
+        <div class="idx">09</div>
+        <div class="name">Alpha Schools</div>
+        <div class="focus">The flagship · 40+ cities</div>
+        <p class="blurb">Elite, high-end private campuses. Afternoon workshops billed as “better than vacation.” Every day.</p>
+        <div class="chips"><span class="chip am">AM · Top 1%</span><span class="chip pm">PM · Life skills</span></div>
+        <div class="domain">alpha.school</div>
+      </a>
+    </section>
+    <section class="wrap">
+      <div class="band">
+        <p class="kicker">Alpha City</p>
+        <h2>Toronto is being built as the first <em>1,000-student</em> Alpha City.</h2>
+        <p>Same morning engine. A city-scale afternoon. The community layer is already open for every geography.</p>
+        <div class="actions">
+          <a class="btn primary" href="https://www.community.alpha.school/?ref=UFB2FW8LX" target="_blank" rel="noopener">Join the Alpha community</a>
+          <a class="btn ghost" href="https://firstprofit.school" target="_blank" rel="noopener">firstprofit.school</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="wrap">
+      <p>Source: Peter Kuperman (@p_kuperman), 14 Sep 2026. Add .school to anything in brackets.</p>
+      <div class="chips-foot">
+        <a class="chip-link" href="https://x.com/p_kuperman/status/2099517869578928440" target="_blank" rel="noopener">x.com/p_kuperman</a>
+        <a class="chip-link" href="https://www.community.alpha.school/?ref=UFB2FW8LX" target="_blank" rel="noopener">community.alpha.school</a>
+      </div>
+      <p class="fine">Editorial directory, not an official Alpha site.</p>
+    </div>
+  </footer>
+</body>
+</html>
